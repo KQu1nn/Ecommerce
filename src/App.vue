@@ -1,8 +1,9 @@
 <template>
-  <main class="w-full h-full bg-black">
+  <main class="w-full h-full flex flex-col items-center gap-11">
     <ProductForm
       @submitProduct="handleProduct"
       />
+      <ProductCards :products="products" />
   </main>
 </template> 
 
