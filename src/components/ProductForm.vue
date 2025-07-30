@@ -1,13 +1,11 @@
 <template>
-    <main>
-        <h2>Ecommerce</h2>
-        <form @submit.prevent="send">
-            <input v-model="productName" type="text" placeholder="Nome do produto..">
-            <input v-model="productPrice" type="number" placeholder="Preço..">
-            <button>Cadastrar Produto</button>
-            <p v-if="userFeedback">{{ userFeedback }}</p>
-        </form>
-    </main>
+    <h2>Ecommerce</h2>
+    <form @submit.prevent="send">
+        <input v-model="productName" type="text" placeholder="Nome do produto..">
+        <input v-model="productPrice" type="number" placeholder="Preço..">
+        <button>Cadastrar Produto</button>
+        <p v-if="userFeedback">{{ userFeedback }}</p>
+    </form>
 </template>
 
 <script setup>

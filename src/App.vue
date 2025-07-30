@@ -1,11 +1,10 @@
 <template>
-  <main>
+  <main class="w-full h-full bg-black">
     <ProductForm
-      class="w-full h-full flex flex-col"
       @submitProduct="handleProduct"
       />
   </main>
-</template>
+</template> 
 
 <script setup>
 import { ref } from 'vue';
