@@ -1,9 +1,16 @@
 <template>
-  <main class="w-full h-full flex flex-col items-center gap-11">
+  <main class="w-full h-full flex flex-col items-center gap-2">
+    <ShoppingCart
+      :products="products"
+      @removeFromCart="handleRemoveItem"
+    />
     <ProductForm
-      @submitProduct="handleProduct"
+        @submitProduct="handleProduct"
       />
-      <ProductCards :products="products" />
+      <ProductCards 
+        :products="products"
+        @validateCartItem="handleCartItem" 
+      />
   </main>
 </template> 
 
@@ -17,6 +24,12 @@ const products = ref([])
 
 function handleProduct(product) {
   products.value.push(product);
+}
+function handleCartItem(product) {
+  product.isInCart = true;
+}
+function handleRemoveItem(product) {
+  products.value[product].isInCart = false;
 }
 
 console.log(products.value)

@@ -1,6 +1,6 @@
 <template>
     <div class="w-full h-full flex flex-col items-center justify-center">
-        <h2 class="text-lg py-9">Adicionar produto</h2>
+        <h2 class="text-2xl pb-9">Adicionar produto</h2>
         <form class="w-2/5 flex flex-col items-center gap-2" @submit.prevent="send">
             <input class="w-72 h-9 px-3 outline-0 text-sm border-1 border-gray-200"
             v-model="productName" type="text" placeholder="Nome do produto..">
@@ -19,6 +19,7 @@ import { ref } from 'vue';
 
 const productName = ref('');
 const productPrice = ref(null);
+const isInCart = ref(false);
 const userFeedback = ref('');
 const userFeedbackType = ref('');
 const emit = defineEmits(['submitProduct']);
@@ -31,7 +32,8 @@ function send() {
     } else {
         emit('submitProduct', {
             name: productName.value,
-            price: productPrice.value
+            price: productPrice.value,
+            isInCart: isInCart.value
         });
 
         userFeedback.value = 'Produto adicionado com sucesso!';
