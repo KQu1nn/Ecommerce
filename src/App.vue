@@ -15,21 +15,30 @@
 </template> 
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import ProductForm from './components/ProductForm.vue';
 import ProductCards from './components/ProductCards.vue';
 import ShoppingCart from './components/ShoppingCart.vue';
 
+const idCounter = ref(0);
 const products = ref([])
 
 function handleProduct(product) {
-  products.value.push(product);
+  products.value.push({
+      ...product,
+      id: idCounter.value++,
+      quantidade: 0
+    });
 }
 function handleCartItem(product) {
   product.isInCart = true;
+  product.quantidade = (product.quantidade || 0) + 1;
 }
 function handleRemoveItem(product) {
-  products.value[product].isInCart = false;
+  const item = products.value.find(p=> p.id === product.id);
+  if(item) {
+    item.isInCart = false;
+  }
 }
 
 console.log(products.value)

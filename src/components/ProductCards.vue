@@ -1,6 +1,6 @@
 <template>
     <div class="w-5/6 flex flex-row gap-5 flex-wrap justify-center my-5">
-        <div v-for="(product, i) in products" :key="i" class="w-60 h-90 border-1 border-gray-400 rounded-lg">
+        <div v-for="(product, i) in products" :key="product.id" class="w-60 h-90 border-1 border-gray-400 rounded-lg">
             <div class="h-3/6 bg-gray-400 rounded-t-lg flex items-center justify-center text-white font-semibold">
                 <img v-if="product.image" :src="product.image.url" class="h-full w-full object-cover ">
                 <p v-else>Sem imagem</p>
