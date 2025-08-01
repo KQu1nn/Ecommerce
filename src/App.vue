@@ -9,7 +9,8 @@
       />
       <ProductCards 
         :products="products"
-        @validateCartItem="handleCartItem" 
+        @validateCartItem="handleCartItem"
+        @removeFromList="handleRemoveFromList"
       />
   </main>
 </template> 
@@ -36,13 +37,15 @@ function handleCartItem(product) {
 }
 function handleRemoveItem(product) {
   const item = products.value.find(p=> p.id === product.id);
-  if(product.quantidade > 0) {
+  if(product.quantidade >= 0) {
     product.quantidade = (product.quantidade || 0) - 1;
   }
   if(product.quantidade === 0) {
     item.isInCart = false;
   }
 }
-
+function handleRemoveFromList(index) {
+  products.value.splice(index, 1);
+}
 console.log(products.value)
 </script>
