@@ -36,7 +36,10 @@ function handleCartItem(product) {
 }
 function handleRemoveItem(product) {
   const item = products.value.find(p=> p.id === product.id);
-  if(item) {
+  if(product.quantidade > 0) {
+    product.quantidade = (product.quantidade || 0) - 1;
+  }
+  if(product.quantidade === 0) {
     item.isInCart = false;
   }
 }
